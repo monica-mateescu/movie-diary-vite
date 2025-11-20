@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Diary</title>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./src/style.css" />
+
+    <script src="./src/config.js"></script>
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body class="bg-aurora-cinema text-[var(--text-light)]">
+    <header
+      class="fixed top-0 left-0 w-full z-50 backdrop-blur-md md:backdrop-blur-md bg-aurora-cinema/80 md:bg-transparent"
+    >
+      <!-- Navigation Section -->
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <!-- Logo + Title -->
+        <figure class="flex items-center">
+          <img src="./src/assets/Logo.png" alt="logo" class="w-20" />
+          <figcaption class="ml-2 flex items-center">
+            <a
+              href="index.html"
+              class="text-[var(--text-light)] text-2xl italic font-medium"
+            >
+              My BOXOFFICE
+            </a>
+          </figcaption>
+        </figure>
+
+        <!-- Desktop / Tablet Navigation Links -->
+        <ul
+          class="hidden md:flex gap-2 text-[var(--text-light)] text-sm items-center"
+        >
+          <li>
+            <a href="index.html" class="hover:text-[var(--primary-red)]"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="journal.html" class="hover:text-[var(--primary-red)]"
+              >Journal</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Burger Button -->
+        <button
+          id="menu-btn"
+          class="md:hidden flex items-center justify-center p-2 rounded"
+        >
+          <!-- Hamburger Icon -->
+          <svg
+            class="w-6 h-6 text-[var(--text-light)]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu (initially hidden) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full flex flex-col items-center py-4 bg-aurora-cinema opacity-80 backdrop-blur-md"
+      >
+        <!-- Menu links -->
+        <a
+          href="index.html"
+          class="text-[var(--icon-desc)] py-2 hover:text-[var(--primary-red)]"
+        >
+          Home
+        </a>
+        <a
+          href="journal.html"
+          class="text-[var(--icon-desc)] py-2 hover:text-[var(--primary-red)]"
+        >
+          Journal
+        </a>
+      </div>
+    </header>
+
+    <!-- HERO + SEARCH SECTION -->
+    <section
+      class="relative w-full pt-24 h-[300px] md:h-[400px] bg-cover bg-center"
+      style="background-image: url('./src/assets/bg.png')"
+    >
+      <!-- Container to center  -->
+      <div
+        class="container mx-auto h-full flex items-center justify-center px-4"
+      >
+        <!-- SEARCH FORM  -->
+        <form id="search-form" class="w-full max-w-md">
+          <!-- Flex container for input and button -->
+          <div
+            class="flex w-full bg-[var(--card-bg)]/90 rounded-full overflow-hidden"
+          >
+            <!-- Input field -->
+            <input
+              id="search"
+              type="text"
+              placeholder="Search for a movie"
+              class="flex-1 text-[var(--text-light)] text-sm px-4 py-3 bg-transparent focus:outline-none"
+            />
+            <!-- Submit button  -->
+            <button
+              type="submit"
+              class="flex-shrink-0 bg-[var(--primary-red)] hover:bg-[#FF2A45] text-[var(--text-light)] text-sm px-6 py-3 rounded-full"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <main class="container mx-auto px-4 py-2">
+      <section id="popular-movies" class="mb-12 border-[var(--border-gray)]">
+        <h2
+          class="text-3xl font-bold ml-3 mt-4 mb-6 text-[var(--text-light)] italic"
+        >
+          Popular Movies
+        </h2>
+        <div
+          id="cardsContainer"
+          class="flex flex-wrap justify-between gap-4"
+        ></div>
+      </section>
+    </main>
+
+    <footer
+      class="flex flex-col items-center text-[8px] pb-4 pt-10 bg-gradient-to-b from-bg-aurora-cinema/30 via-[var(--card-bg)]/60 to-[var(--card-bg)]"
+    >
+      <figure>
+        <img src="./src/assets/Logo.png" alt="logo" class="w-30" />
+      </figure>
+      <ul class="flex gap-5">
+        <li class="hover:text-[var(--primary-red)] hover:cursor-pointer">
+          Terms and Privacy Notice
+        </li>
+        <li class="hover:text-[var(--primary-red)] hover:cursor-pointer">
+          Help
+        </li>
+        <li class="hover:text-[var(--primary-red)] hover:cursor-pointer">
+          Cookie Notice
+        </li>
+      </ul>
+      <p>© 1996-2025, MyBoxOffice.com, Inc. or its affiliates</p>
+    </footer>
+  </body>
+</html>

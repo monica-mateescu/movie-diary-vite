@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --primary-red: #ff4c60; /* favorite & buttons */
+  --background-dark: #1b1f28; /* body background */
+  --card-bg: #2a2e3e; /* card background */
+  --text-light: #e1e2ec; /* titles and text */
+  --icon-light: #f0f0f0; /* icons */
+  --icon-desc: white; /* description icon */
+  --border-gray: #3a3f4f; /* borders */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.material-icons-only {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 10px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  pointer-events: auto;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
+}
+
+.material-icons-only:focus {
+  outline: none;
+}
+
+.icon-hover {
+  transition: transform 0.18s ease-out;
+}
+
+.icon-hover:hover {
+  transform: scale(1.15);
+}
+
+@keyframes fav-bounce {
+  0% {
+    transform: scale(1.15);
+  }
+  30% {
+    transform: scale(2.1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce-on-click {
+  animation: fav-bounce 0.7s ease-out;
+}
+
+@layer utilities {
+  .bg-aurora-cinema {
+    background: radial-gradient(
+        circle at 10% 0%,
+        rgba(255, 0, 204, 0.05) 0,
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 90% 0%,
+        rgba(0, 234, 255, 0.18) 0,
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 0% 80%,
+        rgba(255, 166, 0, 0.1) 0,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 100% 90%,
+        rgba(255, 75, 75, 0.1) 0,
+        transparent 55%
+      ),
+      linear-gradient(to bottom, #020617 0%, #020617 40%, #020819 100%);
+    background-attachment: fixed;
+  }
+}
