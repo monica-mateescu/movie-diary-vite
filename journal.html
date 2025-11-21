@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,108 +15,38 @@
     <link rel="stylesheet" href="./src/style.css" />
 
     <script src="./src/config.js"></script>
+
     <script type="module" src="./src/journal.js"></script>
+    <script type="module" src="./src/loadheader.js" defer></script>
+    <script type="module" src="./src/mobilemenue.js" defer></script>
   </head>
   <body
-    class="bg-aurora-cinema text-[var(--text-light)] min-h-screen flex flex-col"
+    class="bg-aurora-cinema flex min-h-screen flex-col text-[var(--text-light)]"
   >
-    <header
-      class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md"
-    >
-      <!-- Navigation Section -->
-      <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <!-- Logo + Title -->
-        <figure class="flex items-center">
-          <img src="./src/assets/Logo.png" alt="logo" class="w-20" />
-          <figcaption class="ml-2 flex items-center">
-            <a
-              href="index.html"
-              class="text-[var(--text-light)] font-medium text-2xl italic"
-            >
-              My BOXOFFICE
-            </a>
-          </figcaption>
-        </figure>
-
-        <!-- Desktop / Tablet Navigation Links -->
-        <ul
-          class="hidden md:flex gap-2 text-[var(--text-light)] text-sm items-center"
-        >
-          <li>
-            <a href="index.html" class="hover:text-[var(--primary-red)]"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a href="journal.html" class="hover:text-[var(--primary-red)]"
-              >Journal</a
-            >
-          </li>
-        </ul>
-
-        <!-- Mobile Burger Button -->
-        <button
-          id="menu-btn"
-          class="md:hidden flex items-center justify-center p-2 rounded"
-        >
-          <!-- Hamburger Icon -->
-          <svg
-            class="w-6 h-6 text-[var(--text-light)]"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-      </nav>
-
-      <!-- Mobile Menu (initially hidden) -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden absolute top-full left-0 w-full flex flex-col items-center py-4 bg-aurora-cinema opacity-95 backdrop-blur-md"
-      >
-        <a
-          href="index.html"
-          class="text-[var(--icon-desc)] py-2 hover:text-[var(--primary-red)]"
-          >Home</a
-        >
-        <a
-          href="journal.html"
-          class="text-[var(--icon-desc)] py-2 hover:text-[var(--primary-red)]"
-          >Journal</a
-        >
-      </div>
-    </header>
+    <!-- our Dynamic header -->
+    <div id="header-container"></div>
 
     <!-- HERO + SEARCH SECTION -->
     <section
-      class="relative w-full pt-24 h-[200px] md:h-[200px] bg-cover bg-center"
+      class="relative h-[200px] w-full bg-cover bg-center pt-24 md:h-[200px]"
     >
       <div
-        class="container mx-auto h-full flex items-center justify-center px-4"
+        class="container mx-auto flex h-full items-center justify-center px-4"
       >
         <form id="search-form" class="w-full max-w-md">
           <div
-            class="flex w-full bg-[var(--card-bg)]/90 rounded-full overflow-hidden"
+            class="flex w-full overflow-hidden rounded-full bg-[var(--card-bg)]/90"
           >
             <input
               id="search"
               type="text"
               placeholder="Search for a movie"
-              class="flex-1 text-[var(--text-light)] text-sm px-4 py-3 bg-transparent focus:outline-none"
+              class="flex-1 bg-transparent px-4 py-3 text-sm text-[var(--text-light)] focus:outline-none"
             />
 
             <button
               type="submit"
-              class="flex-shrink-0 bg-[var(--primary-red)] hover:bg-[#FF2A45] text-[var(--text-light)] text-sm px-6 py-3 rounded-full"
+              class="flex-shrink-0 rounded-full bg-[var(--primary-red)] px-6 py-3 text-sm text-[var(--text-light)] hover:bg-[#FF2A45]"
             >
               Search
             </button>
@@ -124,10 +54,10 @@
         </form>
       </div>
     </section>
-    <main class="container mx-auto px-4 py-8 pt-20 md:pt-24 flex-1">
+    <main class="container mx-auto flex-1 px-4 py-8 pt-20 md:pt-24">
       <section id="popular-movies" class="mb-12 border-[var(--border-gray)]">
         <h2
-          class="text-3xl font-bold ml-3 mt-4 mb-6 text-[var(--text-light)] italic"
+          class="mt-4 mb-6 ml-3 text-3xl font-bold text-[var(--text-light)] italic"
         >
           Favourite Movies
         </h2>
@@ -136,19 +66,19 @@
     </main>
 
     <footer
-      class="flex flex-col items-center text-[8px] pb-4 pt-10 bg-gradient-to-b from-bg-aurora-cinema/30 via-[var(--card-bg)]/60 to-[var(--card-bg)]"
+      class="from-bg-aurora-cinema/30 flex flex-col items-center bg-gradient-to-b via-[var(--card-bg)]/60 to-[var(--card-bg)] pt-10 pb-4 text-[8px]"
     >
       <figure>
         <img src="./src/assets/Logo.png" alt="logo" class="w-30" />
       </figure>
       <ul class="flex gap-5">
-        <li class="hover:text-[var(--primary-red)] hover:cursor-pointer">
+        <li class="hover:cursor-pointer hover:text-[var(--primary-red)]">
           Terms and Privacy Notice
         </li>
-        <li class="hover:text-[var(--primary-red)] hover:cursor-pointer">
+        <li class="hover:cursor-pointer hover:text-[var(--primary-red)]">
           Help
         </li>
-        <li class="hover:text-[var(--primary-red)] hover:cursor-pointer">
+        <li class="hover:cursor-pointer hover:text-[var(--primary-red)]">
           Cookie Notice
         </li>
       </ul>
