@@ -47,17 +47,15 @@ class UINotes {
     form.append(field, saveBtn);
     content.append(h2, form);
 
-    content.appendChild(this.#displayNotes(movie));
+    content.appendChild(this.#displayNotes(movie.id));
 
     saveBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
       const submit = this.#handleFormSubmit(field, movie.id);
       if (submit) {
-        const updatedMovie = getFavourites().find((m) => m.id === movie.id);
-
         const oldList = content.querySelector("ul");
-        const newList = this.#displayNotes(updatedMovie);
+        const newList = this.#displayNotes(movie.id);
 
         if (oldList) {
           oldList.replaceWith(newList);
@@ -100,10 +98,12 @@ class UINotes {
 
   /**
    * Generates a <ul> element containing all notes for a given movie.
-   * @param  movie - Movie object containing notes
+   * @param  movieID - The ID of the movie
    * Returns a <ul> element populated with note items
    */
-  #displayNotes(movie) {
+  #displayNotes(movieId) {
+    const movies = getFavourites();
+    const movie = movies.find((m) => m.id === movieId);
     const ul = document.createElement("ul");
 
     const notes = movie.notes ?? [];
