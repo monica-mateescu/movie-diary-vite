@@ -2,8 +2,8 @@ import {
   addNoteToFav,
   getFavourites,
   removeNoteFromFav,
-} from "../favourites.js";
-import { getNoteOverlay } from "../moviecards.js";
+} from "./favourites.js";
+import { getNoteOverlay } from "./moviecards.js";
 import UIDialog from "./UIDialog";
 
 /**

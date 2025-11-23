@@ -6,7 +6,7 @@ import {
   isFavourite,
   removeFromFavourites,
   setupResponsiveIcons,
-} from "./favourites.js";
+} from "./modules/favourites.js";
 import UINotes from "./modules/UINotes.js";
 import { handleSearchFormSubmit, searchForm } from "./modules/search.js";
 import {
@@ -21,7 +21,8 @@ import {
   getPosterStyle,
   getRating,
   getTitleStyle,
-} from "./moviecards.js";
+} from "./modules/moviecards.js";
+import { API_KEY } from "./modules/config.js";
 
 // MovieApp class to manage fetching and displaying movies
 class MovieApp {

@@ -6,7 +6,7 @@ import {
   isFavourite,
   removeFromFavourites,
   setupResponsiveIcons,
-} from "./favourites.js";
+} from "./modules/favourites.js";
 import UINotes from "./modules/UINotes.js";
 import { handleSearchFormSubmit, searchForm } from "./modules/search.js";
 import {
@@ -21,7 +21,7 @@ import {
   getPosterStyle,
   getRating,
   getTitleStyle,
-} from "./moviecards.js";
+} from "./modules/moviecards.js";
 
 const main = document.querySelector("main");
 document.addEventListener("DOMContentLoaded", () => {
