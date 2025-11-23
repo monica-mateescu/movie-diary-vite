@@ -45,9 +45,36 @@ export function setupResponsiveIcons() {
   });
 }
 
-export function getNotes(id) {
-  const favs = getFavourites();
-  const fav = favs.find((fav) => fav.id === id);
+export function getNotesForFav(id) {
+  const fav = getFavourites().find((fav) => fav.id === id);
 
   return fav.notes ?? [];
+}
+
+export function addNoteToFav(id, noteContent) {
+  const favs = getFavourites();
+  const fav = favs.find((f) => f.id === id);
+
+  fav.notes = fav.notes ?? [];
+
+  const note = { id: "note-" + crypto.randomUUID(), content: noteContent };
+
+  fav.notes.push(note);
+
+  saveFavourites(favs);
+
+  return note;
+}
+
+export function removeNoteFromFav(id, noteId) {
+  const favs = getFavourites();
+  const fav = favs.find((f) => f.id === id);
+
+  if (!fav) return;
+
+  const notes = fav.notes.filter((n) => n.id !== noteId);
+
+  fav.notes = notes;
+
+  saveFavourites(favs);
 }
