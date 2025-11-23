@@ -2,25 +2,25 @@ import {
   addToFavourites,
   getFavourites,
   getIconSize,
+  getNotesForFav,
   isFavourite,
   removeFromFavourites,
   setupResponsiveIcons,
-  getNotes,
 } from "./favourites.js";
-import { searchForm, handleSearchFormSubmit } from "./modules/search.js";
-import { renderNotes } from "./modules/ui.js";
+import UINotes from "./modules/UINotes.js";
+import { handleSearchFormSubmit, searchForm } from "./modules/search.js";
 import {
+  attachFavIconHandler,
   getCardStyle,
+  getDescIconStyle,
+  getDescStyle,
   getFadeOverlay,
   getFavIconStyle,
   getIconWrapperStyle,
+  getNoteOverlay,
   getPosterStyle,
   getRating,
-  attachFavIconHandler,
-  getDescIconStyle,
-  getNoteOverlay,
   getTitleStyle,
-  getDescStyle,
 } from "./moviecards.js";
 
 // MovieApp class to manage fetching and displaying movies
@@ -38,7 +38,7 @@ class MovieApp {
   async fetchPopularMovies() {
     try {
       const response = await fetch(
-        `${this.apiUrl}/movie/popular?api_key=${this.apiKey}&language=en-US&page=1`
+        `${this.apiUrl}/movie/popular?api_key=${this.apiKey}&language=en-US&page=1`,
       );
       const data = await response.json();
 
@@ -117,24 +117,27 @@ class MovieApp {
       wrapper.appendChild(ratingDiv);
 
       // Description icon and notes list
-      if (isFavourite(movie.id) && getNotes(movie.id).length > 0) {
-        const noteOverlay = document.createElement("div");
-        const notes = getNotes(movie.id);
-        const descIcon = document.createElement("span");
-        descIcon.className = getDescIconStyle();
-        descIcon.title = "Add Description";
-        descIcon.textContent = "description";
-        descIcon.style.fontSize = getIconSize();
-        iconWrapper.appendChild(descIcon);
+      if (isFavourite(movie.id)) {
+        const notes = getNotesForFav(movie.id);
+        if (notes.length > 0) {
+          const descIcon = document.createElement("span");
+          descIcon.className = getDescIconStyle();
+          descIcon.title = "Add Description";
+          descIcon.textContent = "description";
+          descIcon.style.fontSize = getIconSize();
+          iconWrapper.appendChild(descIcon);
 
-        descIcon.addEventListener("mouseenter", () => {
-          renderNotes(notes, noteOverlay);
-          noteOverlay.className = getNoteOverlay();
-          wrapper.appendChild(noteOverlay);
-        });
-        descIcon.addEventListener("mouseleave", () => {
-          noteOverlay.remove();
-        });
+          const uiNotes = new UINotes();
+          const renderNotes = uiNotes.renderNotes(notes);
+          descIcon.addEventListener("mouseenter", () => {
+            wrapper.appendChild(renderNotes);
+            console.log(renderNotes);
+          });
+
+          descIcon.addEventListener("mouseleave", () => {
+            renderNotes.remove();
+          });
+        }
       }
       wrapper.appendChild(iconWrapper);
 

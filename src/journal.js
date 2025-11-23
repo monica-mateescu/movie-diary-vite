@@ -2,26 +2,25 @@ import {
   addToFavourites,
   getFavourites,
   getIconSize,
+  getNotesForFav,
   isFavourite,
   removeFromFavourites,
   setupResponsiveIcons,
-  getNotes,
 } from "./favourites.js";
-
-import { renderNotes, addNoteToFavorite } from "./modules/ui.js";
-import { searchForm, handleSearchFormSubmit } from "./modules/search.js";
+import UINotes from "./modules/UINotes.js";
+import { handleSearchFormSubmit, searchForm } from "./modules/search.js";
 import {
+  attachFavIconHandler,
   getCardStyle,
+  getDescIconStyle,
+  getDescStyle,
   getFadeOverlay,
   getFavIconStyle,
   getIconWrapperStyle,
+  getNoteOverlay,
   getPosterStyle,
   getRating,
-  attachFavIconHandler,
-  getDescIconStyle,
-  getNoteOverlay,
   getTitleStyle,
-  getDescStyle,
 } from "./moviecards.js";
 
 const main = document.querySelector("main");
@@ -108,8 +107,8 @@ function renderJournal() {
       typeof imagePath === "string" && imagePath.startsWith("http")
         ? imagePath
         : imagePath
-        ? `https://image.tmdb.org/t/p/w500${imagePath}`
-        : "https://via.placeholder.com/200x300?text=No+Image";
+          ? `https://image.tmdb.org/t/p/w500${imagePath}`
+          : "https://via.placeholder.com/200x300?text=No+Image";
 
     const img = document.createElement("img");
     img.src = poster;
@@ -127,8 +126,8 @@ function renderJournal() {
       typeof movie.vote_average === "number"
         ? movie.vote_average
         : typeof movie.rating === "number"
-        ? movie.rating
-        : null;
+          ? movie.rating
+          : null;
     ratingDiv.textContent =
       ratingValue != null ? `⭐ ${ratingValue.toFixed(1)} ` : "⭐ N/A";
 
@@ -166,24 +165,23 @@ function renderJournal() {
     iconWrapper.appendChild(descIcon);
 
     // Klick -> eigene Notiz hinzufügen
+    const uiNotes = new UINotes();
     descIcon.addEventListener("click", () => {
-      addNoteToFavorite(movie.id);
+      uiNotes.createForm(movie.id);
     });
 
     // Hover -> Overlay, falls Notizen vorhanden
-    const notes = getNotes(movie.id);
+    const notes = getNotesForFav(movie.id);
     if (notes.length > 0) {
-      const noteOverlay = document.createElement("div");
       descIcon.classList.add("text-yellow-200");
 
+      const renderNotes = uiNotes.renderNotes(notes);
       descIcon.addEventListener("mouseenter", () => {
-        renderNotes(notes, noteOverlay);
-        noteOverlay.className = getNoteOverlay();
-        wrapper.appendChild(noteOverlay);
+        wrapper.appendChild(renderNotes);
       });
 
       descIcon.addEventListener("mouseleave", () => {
-        noteOverlay.remove();
+        renderNotes.remove();
       });
     }
 
