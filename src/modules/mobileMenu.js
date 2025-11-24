@@ -1,19 +1,16 @@
-// src/modules/mobileMenu.js
 export function setupMobileMenu() {
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
 
-  if (!menuBtn || !mobileMenu) return;
+  if (!btn || !menu) return;
 
-  // Toggle mobile menu visibility when burger button is clicked
-  menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
   });
 
-  // Optional: close menu when clicking a link
-  mobileMenu.querySelectorAll("a").forEach((link) => {
+  menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
+      menu.classList.add("hidden");
     });
   });
 }
