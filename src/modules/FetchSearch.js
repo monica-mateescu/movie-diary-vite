@@ -1,3 +1,5 @@
+import { ACCESS_TOKEN } from "./config";
+
 /**
  * Service class responsible for interacting with the TMDB API.
  * Handles authenticated fetch requests and provides search functionality.
@@ -8,8 +10,7 @@ class FetchSearch {
    */
   constructor() {
     this.baseUrl = "https://api.themoviedb.org/3";
-    this.accessToken =
-      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOTg1MTMwMDQ5MGM3ZjliMGM5MTJmM2Y3ZDBhMTMyNSIsIm5iZiI6MTc2Mjg1ODI0OC4yNDE5OTk5LCJzdWIiOiI2OTEzMTUwODI3Mjk3ZjJlMzc5YWNjNDYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.qQV5ezx-p_63eQ4UA5MEj_IsR8LOwE7uZkaa3clKQeU";
+    this.accessToken = ACCESS_TOKEN;
   }
 
   /**
