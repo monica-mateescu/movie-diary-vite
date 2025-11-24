@@ -17,8 +17,9 @@
     <script src="./src/config.js"></script>
 
     <script type="module" src="./src/journal.js"></script>
-    <script type="module" src="./src/loadheader.js" defer></script>
+    <script type="module" src="./src/loadHeader.js" defer></script>
     <script type="module" src="./src/mobilemenue.js" defer></script>
+    <script type="module" src="./src/loadFooter.js" defer></script>
   </head>
   <body
     class="bg-aurora-cinema flex min-h-screen flex-col text-[var(--text-light)]"
@@ -54,6 +55,7 @@
         </form>
       </div>
     </section>
+
     <main class="container mx-auto flex-1 px-4 py-8 pt-20 md:pt-24">
       <section id="popular-movies" class="mb-12 border-[var(--border-gray)]">
         <h2
@@ -64,25 +66,7 @@
         <div id="cardsContainer" class="flex flex-wrap gap-4"></div>
       </section>
     </main>
-
-    <footer
-      class="from-bg-aurora-cinema/30 flex flex-col items-center bg-gradient-to-b via-[var(--card-bg)]/60 to-[var(--card-bg)] pt-10 pb-4 text-[8px]"
-    >
-      <figure>
-        <img src="./src/assets/Logo.png" alt="logo" class="w-30" />
-      </figure>
-      <ul class="flex gap-5">
-        <li class="hover:cursor-pointer hover:text-[var(--primary-red)]">
-          Terms and Privacy Notice
-        </li>
-        <li class="hover:cursor-pointer hover:text-[var(--primary-red)]">
-          Help
-        </li>
-        <li class="hover:cursor-pointer hover:text-[var(--primary-red)]">
-          Cookie Notice
-        </li>
-      </ul>
-      <p>© 1996-2025, MyBoxOffice.com, Inc. or its affiliates</p>
-    </footer>
+    <!-- our Dynamic footer -->
+    <div id="footer-container"></div>
   </body>
 </html>
