@@ -7,7 +7,9 @@
 // 5) mobile menu
 import { API_KEY } from "./modules/config.js";
 import { setupResponsiveIcons } from "./modules/favourites.js";
-import { setupMobileMenu } from "./modules/mobileMenu.js";
+import { loadFooter } from "./modules/loadFooter.js";
+import { loadheader } from "./modules/loadHeader.js";
+import { mobileMenuHandler } from "./modules/mobilemenue.js";
 import MovieApp from "./modules/movieApp.js";
 import { handleSearchFormSubmit, searchForm } from "./modules/search.js";
 
@@ -16,4 +18,7 @@ app.fetchPopularMovies();
 setupResponsiveIcons();
 
 searchForm.addEventListener("submit", handleSearchFormSubmit);
-setupMobileMenu();
+
+loadheader();
+mobileMenuHandler();
+loadFooter();
