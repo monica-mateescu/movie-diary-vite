@@ -7,7 +7,7 @@ export async function loadFooter(params) {
   if (!container) return;
 
   // Fetch the external footer HTML file
-  const response = await fetch("../../footer.html");
+  const response = await fetch("/footer.html");
 
   // Convert the response into plain text (HTML string)
   const html = await response.text();
